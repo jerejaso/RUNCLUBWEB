@@ -15,6 +15,7 @@
   a { color: #000; text-decoration: none; }
   @keyframes rc-marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes rc-marq-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes rc-pulse { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
   @keyframes rc-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .nav-link:hover { background: #fff; color: #000 !important; }
   .nav-ig:hover { background: #000; color: #f04e23 !important; }
@@ -42,12 +43,13 @@
 <!-- NAV -->
 <div style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,3vw,32px)">
   <a href="#top" style="display:block;flex:none">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAADSCAYAAADQW/V8AAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjdjOTUxNTQ1LTQ1MmMtNDAxMC04MjJjLTk5OGRlNWUzNTNhMwAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoVKT8l+EacTJ+dNDLf5bOnAAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6Y2M0MTdiYTYtYmU4Ny00ODRiLWI4OGMtMWY4MjE4OTM5OTJmbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaBI0xbKKe0IkRTBSSuk5Q6gAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIF0Dhk7bdZZMkqOZaEDT4RJvIpxK1Elel0vhH72oZsCOpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2hO3UuLOeRLiCkul1GBHYLMAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggb1uOvzdManEb8A9vCsGOuu01LxoJlCfGb/lWs+4YWKhkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTo3Yzk1MTU0NS00NTJjLTQwMTAtODIyYy05OThkZTVlMzUzYTMvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDoyZjllOWVkZS02ZjQ3LTQ1ODQtOTZlMC00YjBlYjAyYzNkMDVyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggXQOGTtt1lkySo5loQNPhEm8inErUSV6XS+EfvahmwI6iY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIJYWOLMsXoRsHzdzCt1fCqM/gubtHTVlueqDBmkRLdDcomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYID2yEi4b+X2ifoSbs/8z2hc72ZJpkF4BWMAvmkS+ETfKdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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" alt="RUNCLUB CORDOBA" style="display:block;height:48px;width:auto">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAADSCAYAAADQW/V8AAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjdjOTUxNTQ1LTQ1MmMtNDAxMC04MjJjLTk5OGRlNWUzNTNhMwAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoVKT8l+EacTJ+dNDLf5bOnAAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6Y2M0MTdiYTYtYmU4Ny00ODRiLWI4OGMtMWY4MjE4OTM5OTJmbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaBI0xbKKe0IkRTBSSuk5Q6gAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIF0Dhk7bdZZMkqOZaEDT4RJvIpxK1Elel0vhH72oZsCOpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2hO3UuLOeRLiCkul1GBHYLMAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggb1uOvzdManEb8A9vCsGOuu01LxoJlCfGb/lWs+4YWKhkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTo3Yzk1MTU0NS00NTJjLTQwMTAtODIyYy05OThkZTVlMzUzYTMvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDoyZjllOWVkZS02ZjQ3LTQ1ODQtOTZlMC00YjBlYjAyYzNkMDVyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggXQOGTtt1lkySo5loQNPhEm8inErUSV6XS+EfvahmwI6iY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIJYWOLMsXoRsHzdzCt1fCqM/gubtHTVlueqDBmkRLdDcomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYID2yEi4b+X2ifoSbs/8z2hc72ZJpkF4BWMAvmkS+ETfKdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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" alt="RUNCLUB CORDOBA" style="display:block;height:48px;width:auto;filter:invert(1)">
   </a>
   <div class="nav-links" style="display:flex;align-items:center;gap:6px;background:#000;border-radius:999px;padding:6px;box-shadow:0 6px 24px rgba(0,0,0,0.25)">
     <a href="#juntadas" class="nav-link" style="display:block;color:#fff;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:-0.02em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:all .2s">Juntadas</a>
     <a href="#galeria" class="nav-link" style="display:block;color:#fff;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:-0.02em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:all .2s">Galería</a>
     <a href="#after" class="nav-link" style="display:block;color:#fff;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:-0.02em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:all .2s">After</a>
+    <a href="#top" class="nav-link" style="display:block;color:#fff;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:-0.02em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:all .2s">Viaje BA</a>
     <a href="#faq" class="nav-link" style="display:block;color:#fff;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:-0.02em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:all .2s">FAQ</a>
   </div>
   <div style="display:flex;gap:8px;align-items:center;flex:none">
@@ -56,38 +58,144 @@
   </div>
 </div>
 
-<!-- HERO -->
-<section id="top" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:120px">
-  <div style="padding:0 clamp(16px,3vw,32px) clamp(24px,4vw,48px)">
-    <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:clamp(16px,3vw,40px)">Social running club — Córdoba, Argentina</div>
-    <h1 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;font-size:clamp(52px,13.5vw,260px);text-align:center">Nadie<br>corre<br>solo</h1>
-  </div>
-  <div style="border-top:2px solid #000;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));align-items:center;gap:24px;padding:clamp(20px,3vw,36px) clamp(16px,3vw,32px)">
-    <div style="font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.7">
-      <div style="font-weight:700">Con base en</div>
-      <div>Parque Sarmiento<br>Córdoba Capital</div>
-    </div>
-    <div style="display:flex;justify-content:center">
-      <div style="position:relative;width:144px;height:144px">
-        <div style="position:absolute;inset:0;animation:rc-spin 12s linear infinite">
-          <svg viewBox="0 0 144 144" style="width:100%;height:100%;display:block">
-            <defs><path id="rc-circle" d="M 72,72 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"></path></defs>
-            <text style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.18em" fill="#000">
-              <textPath href="#rc-circle">RUNCLUBCORDOBA • RUNCLUBCORDOBA • RUNCLUBCORDOBA • </textPath>
-            </text>
-          </svg>
-        </div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="square"><path d="M12 4 L12 20 M5 13 L12 20 L19 13"></path></svg>
-        </div>
+<!-- VIAJE BA -->
+<section id="top" style="background:#000;color:#fff;padding:clamp(56px,8vw,110px) 0;border-top:2px solid #f04e23">
+
+  <!-- header -->
+  <div style="padding:0 clamp(16px,3vw,32px) clamp(32px,5vw,64px)">
+
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(28px,4vw,52px)">
+      <h2 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.88;font-size:clamp(40px,10vw,180px);overflow-wrap:break-word;text-align:center;width:100%">¿Y si<br>corríamos<br><span style="color:#f04e23">Buenos<br>Aires</span><br>juntos?</h2>
+      <div style="flex:none;text-align:right;align-self:flex-end;padding-bottom:8px">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;color:#f04e23;margin-bottom:6px">Viaje grupal · 2026</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:-0.01em;color:rgba(255,255,255,0.4);line-height:1.8">Media maratón · Maratón<br>Córdoba → Buenos Aires</div>
       </div>
     </div>
-    <div style="font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.7;text-align:right">
-      <div style="font-weight:700">+270 miembros</div>
-      <div>Todos los niveles<br>Domingos, sin excusas</div>
+    <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:clamp(22px,3vw,36px)">
+      <a href="https://docs.google.com/forms/d/1ZZzqfZ2kJ7U7xkS7ncniBtr3v9muOc2LGSO6597eQBs/viewform" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:12px;background:#f04e23;color:#fff;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(14px,1.6vw,17px);letter-spacing:-0.02em;padding:clamp(14px,2vw,20px) clamp(22px,3vw,36px);transition:transform .25s,background .18s">
+        Quiero dar mi opinión
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12 H19 M12 5 L19 12 L12 19"></path></svg>
+      </a>
+      <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3)">Sin compromiso · Gratis · 2 minutos</div>
     </div>
   </div>
+
+  <!-- la idea (naranja) -->
+  <div style="background:#f04e23;color:#000;margin-top:clamp(40px,6vw,80px);padding:clamp(32px,5vw,72px) clamp(16px,3vw,32px)">
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(20px,3vw,40px)">
+      <h3 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.9;font-size:clamp(26px,5vw,80px)">La idea</h3>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em">01 — Contexto</div>
+    </div>
+    <div style="border-top:2px solid #000;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(20px,4vw,56px);padding-top:clamp(22px,3vw,40px)">
+      <p style="margin:0;font-size:clamp(16px,2vw,22px);line-height:1.45;font-weight:500;max-width:52ch">Buenos Aires tiene carreras que marcan. Una media maratón, una maratón — eventos donde la energía de la ciudad y la del grupo se potencian. <strong>Estamos imaginando si habría ganas de ir juntos, como club, y vivirlo de punta a punta.</strong></p>
+      <div>
+        <p style="margin:0 0 20px;font-size:clamp(14px,1.4vw,16px);line-height:1.65;max-width:46ch">La propuesta incluiría traslado, alojamiento grupal, retiro del kit con compañía y actividades coordinadas por el club. Pero antes de imaginar los detalles, queremos saber si esto le interesa a la comunidad.</p>
+        <p style="margin:0;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:-0.01em;font-weight:700;border-left:3px solid #000;padding-left:14px;line-height:1.7">Hoy estamos explorando,<br>no vendiendo nada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- cómo lo imaginamos -->
+  <div style="padding:clamp(32px,5vw,72px) clamp(16px,3vw,32px)">
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(20px,3vw,40px)">
+      <h3 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.9;font-size:clamp(24px,4.5vw,72px)">Cómo lo<br>imaginamos</h3>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;color:#f04e23">02 — La propuesta</div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.15);display:grid;grid-template-columns:repeat(2,1fr)">
+      <div style="border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);padding:clamp(20px,3vw,40px) clamp(16px,2.5vw,28px)">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#f04e23;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">01</div>
+        <h4 style="margin:0 0 10px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(16px,2.4vw,28px);line-height:0.95">Viaje compartido</h4>
+        <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Salir y volver juntos desde Córdoba. Que el viaje ya sea parte de la experiencia.</p>
+      </div>
+      <div style="border-bottom:1px solid rgba(255,255,255,0.1);padding:clamp(20px,3vw,40px) clamp(16px,2.5vw,28px)">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#f04e23;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">02</div>
+        <h4 style="margin:0 0 10px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(16px,2.4vw,28px);line-height:0.95">Alojamiento grupal</h4>
+        <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Estar cerca el día anterior y el día de la carrera. Sin improvisar ni romperte la cabeza.</p>
+      </div>
+      <div style="border-right:1px solid rgba(255,255,255,0.1);padding:clamp(20px,3vw,40px) clamp(16px,2.5vw,28px)">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#f04e23;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">03</div>
+        <h4 style="margin:0 0 10px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(16px,2.4vw,28px);line-height:0.95">Retiro del kit</h4>
+        <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Ir a buscar el chip y la remera todos juntos. Siempre tiene más onda en compañía.</p>
+      </div>
+      <div style="padding:clamp(20px,3vw,40px) clamp(16px,2.5vw,28px)">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#f04e23;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">04</div>
+        <h4 style="margin:0 0 10px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(16px,2.4vw,28px);line-height:0.95">Actividades del club</h4>
+        <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Antes y después de la carrera. Los detalles los armamos con lo que la comunidad nos pida.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- por qué te preguntamos + cómo sigue -->
+  <div style="background:#0a0a0a;padding:clamp(32px,5vw,72px) clamp(16px,3vw,32px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,80px);align-items:start">
+
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;color:#f04e23;margin-bottom:16px">03 — Por qué te preguntamos</div>
+        <h3 style="margin:0 0 20px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.9;font-size:clamp(22px,3.5vw,52px)">Tu opinión<br>define si<br>esto existe</h3>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="border-top:1px solid rgba(255,255,255,0.1);padding:16px 0;display:flex;gap:12px">
+            <span style="color:#f04e23;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;margin-top:3px">—</span>
+            <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6">Qué carreras te interesan y en qué épocas podés ir</p>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.1);padding:16px 0;display:flex;gap:12px">
+            <span style="color:#f04e23;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;margin-top:3px">—</span>
+            <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6">Cuánta gente tendría ganas de sumarse</p>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.1);padding:16px 0;display:flex;gap:12px">
+            <span style="color:#f04e23;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;margin-top:3px">—</span>
+            <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6">Qué aspectos del viaje te parecen más importantes</p>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);padding:16px 0">
+            <p style="margin:0;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.03em;font-weight:700;color:rgba(255,255,255,0.3)">Respondé = cero compromiso</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;color:#f04e23;margin-bottom:16px">04 — Cómo sigue</div>
+        <h3 style="margin:0 0 20px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.9;font-size:clamp(22px,3.5vw,52px)">Los próximos<br>pasos</h3>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,64px);letter-spacing:-0.05em;color:#f04e23;line-height:1;flex-shrink:0">01</div>
+            <div style="padding-top:6px">
+              <h4 style="margin:0 0 6px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(14px,1.8vw,18px)">Completás la encuesta</h4>
+              <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Menos de 2 minutos. Sin ningún compromiso ni pago.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,64px);letter-spacing:-0.05em;color:rgba(255,255,255,0.18);line-height:1;flex-shrink:0">02</div>
+            <div style="padding-top:6px">
+              <h4 style="margin:0 0 6px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(14px,1.8vw,18px)">Analizamos las respuestas</h4>
+              <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Si hay interés, armamos la propuesta. Si no, lo comunicamos sin vueltas.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="font-family:'Archivo Black',sans-serif;font-size:clamp(32px,5vw,64px);letter-spacing:-0.05em;color:rgba(255,255,255,0.18);line-height:1;flex-shrink:0">03</div>
+            <div style="padding-top:6px">
+              <h4 style="margin:0 0 6px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.03em;font-size:clamp(14px,1.8vw,18px)">Te avisamos primero a vos</h4>
+              <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Los que respondieron son los primeros en enterarse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- cierre con CTA -->
+  <div style="background:#f04e23;color:#000;padding:clamp(40px,6vw,80px) clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <h3 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.88;font-size:clamp(28px,5.5vw,88px);max-width:16ch">Tu opinión puede hacer que esto pase</h3>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <a href="https://docs.google.com/forms/d/1ZZzqfZ2kJ7U7xkS7ncniBtr3v9muOc2LGSO6597eQBs/viewform" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(14px,1.6vw,17px);letter-spacing:-0.02em;padding:clamp(14px,2vw,20px) clamp(22px,3vw,36px);transition:transform .25s">
+        Quiero dar mi opinión
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12 H19 M12 5 L19 12 L12 19"></path></svg>
+      </a>
+      <span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;font-weight:700;opacity:0.5">Sin compromiso · Gratis · 2 min</span>
+    </div>
+  </div>
+
 </section>
+
 
 <!-- MARQUEE -->
 <section style="background:#000;transform:skewY(-2deg);margin:-1px 0;padding:clamp(36px,6vw,80px) 0;overflow:hidden">
@@ -287,6 +395,41 @@
       Ver todas las fotos
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 12 H19 M12 5 L19 12 L12 19"></path></svg>
     </a>
+  </div>
+</section>
+
+
+
+<!-- HERO -->
+<section id="top" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:120px">
+  <div style="padding:0 clamp(16px,3vw,32px) clamp(24px,4vw,48px)">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:clamp(16px,3vw,40px)">Social running club — Córdoba, Argentina</div>
+    <h1 style="margin:0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;font-size:clamp(52px,13.5vw,260px);text-align:center">Nadie<br>corre<br>solo</h1>
+  </div>
+  <div style="border-top:2px solid #000;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));align-items:center;gap:24px;padding:clamp(20px,3vw,36px) clamp(16px,3vw,32px)">
+    <div style="font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.7">
+      <div style="font-weight:700">Con base en</div>
+      <div>Parque Sarmiento<br>Córdoba Capital</div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div style="position:relative;width:144px;height:144px">
+        <div style="position:absolute;inset:0;animation:rc-spin 12s linear infinite">
+          <svg viewBox="0 0 144 144" style="width:100%;height:100%;display:block">
+            <defs><path id="rc-circle" d="M 72,72 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"></path></defs>
+            <text style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.18em" fill="#000">
+              <textPath href="#rc-circle">RUNCLUBCORDOBA • RUNCLUBCORDOBA • RUNCLUBCORDOBA • </textPath>
+            </text>
+          </svg>
+        </div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="square"><path d="M12 4 L12 20 M5 13 L12 20 L19 13"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.7;text-align:right">
+      <div style="font-weight:700">+270 miembros</div>
+      <div>Todos los niveles<br>Domingos, sin excusas</div>
+    </div>
   </div>
 </section>
 
